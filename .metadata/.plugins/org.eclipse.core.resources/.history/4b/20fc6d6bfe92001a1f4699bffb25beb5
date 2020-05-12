@@ -1,0 +1,9 @@
+package com.revature.service;
+
+public class AccountMethods {
+	
+	public static void deposits(Account account, double amount) {
+		account.setDeposits(account.)
+	}
+
+}

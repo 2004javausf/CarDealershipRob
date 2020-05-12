@@ -1,0 +1,21 @@
+package com.revature.driver;
+
+import java.sql.SQLException;
+
+import com.revature.daoimpl.CustomerDAOImpl;
+
+public class Driver {
+
+	public static void main(String[] args) {
+//		MainMenu.startMenu();
+		
+		CustomerDAOImpl cdi = new CustomerDAOImpl();
+		try {
+			cdi.insertCustomer("James", "Martin", "jmartin", "jmartin", 0, 0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

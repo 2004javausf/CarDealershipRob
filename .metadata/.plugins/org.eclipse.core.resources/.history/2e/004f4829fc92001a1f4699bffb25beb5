@@ -1,0 +1,9 @@
+package com.revature.dao;
+
+import java.sql.SQLException;
+
+public interface AccountDAO {
+	
+	public void createAccount(int accountNumber, int deposits, int accountBalance) throws SQLException;
+
+}

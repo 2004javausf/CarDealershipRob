@@ -1,0 +1,13 @@
+package com.revature.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.beans.Car;
+
+public interface CarDAO {
+
+	public void insertCar(int vinNumber, String make, String model, String color, int year,double price, String sold) throws SQLException;
+
+	public List<Car> getCarList() throws SQLException;
+}

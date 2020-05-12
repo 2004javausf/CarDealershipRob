@@ -1,0 +1,32 @@
+package com.revature.driver;
+
+import java.sql.SQLException;
+
+import com.revature.daoimpl.CustomerDAOImpl;
+
+public class Driver {
+
+	public static void main(String[] args) {
+//		MainMenu.startMenu();
+		CustomerDAOImpl cdi = new CustomerDAOImpl();
+		try {
+			System.out.println("Enter your first name:");
+			ps.setString(1, firstName = textInput.nextLine());
+//			firstName = textInput.nextLine();
+			System.out.println("Enter your last name:");
+			ps.setString(2, lastName = textInput.nextLine());
+//			lastName = textInput.nextLine();
+			System.out.println("Enter your user name");
+			ps.setString(3, userName = textInput.nextLine());
+//			userName = textInput.nextLine();
+			System.out.println("Enter your password");
+			ps.setString(4, password = textInput.nextLine());
+//			password = textInput.nextLine();
+			cdi.insertCustomer(null, null, null, null, 0, 0);
+			System.out.println(cdi.getCustomerList());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,16 @@
+package com.revature.dao;
+
+import java.sql.SQLException;
+
+private int customerId;
+private String firstName;
+private String lastName;
+private String userName;
+private String password;
+private int accountNumber;
+
+public interface CustomerDAO {
+	
+	public void insertCustomer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber) throws SQLException;
+
+}

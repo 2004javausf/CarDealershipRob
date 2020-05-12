@@ -1,0 +1,31 @@
+package com.revature.daoimpl;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.beans.Car;
+import com.revature.dao.CarDAO;
+import com.revature.util.ConnFactory;
+
+public class CarDAOImpl implements CarDAO {
+	
+	public static ConnFactory cf = ConnFactory.getInstance();
+
+	@Override
+	public void insertCar(int vinNumber, String make, String model, String color, int year, String sold)
+			throws SQLException {
+		Connection conn = cf.getConnection();
+		Statement stmt = conn.createStatement();
+		String sql = "INSERT INTO STUDENT VALUES(" +vinNumber+ ", '"+make+"', '"+model+"', '"+color+"', "+year+",  "+sold+")";
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Car> getCarList() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

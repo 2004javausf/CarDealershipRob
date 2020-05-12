@@ -1,0 +1,13 @@
+package com.revature.driver;
+
+import java.sql.SQLException;
+
+import com.revature.daoimpl.CustomerDAOImpl;
+
+public class Driver {
+
+	public static void main(String[] args) {
+//		MainMenu.startMenu();
+		CustomerDAOImpl cdi = new CustomerDAOImpl();
+		cdi.getCustomerList();
+}

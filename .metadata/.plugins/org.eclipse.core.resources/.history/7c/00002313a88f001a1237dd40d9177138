@@ -1,0 +1,13 @@
+package com.revature.beans;
+
+public class Car {
+	
+	private int carId;
+	private String make;
+	private String model;
+	private String color;
+	private int year;
+	private boolean sold = false;
+	
+
+}

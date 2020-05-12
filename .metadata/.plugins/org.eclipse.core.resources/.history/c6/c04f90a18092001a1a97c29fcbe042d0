@@ -1,0 +1,15 @@
+package com.revature.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.beans.Customer;
+
+public interface CustomerDAO {
+	
+	//Add new customer
+	public void insertCustomer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber) throws SQLException;
+
+	//Read all customers
+	public List<Customer> getCustomerList() throws SQLException;
+}

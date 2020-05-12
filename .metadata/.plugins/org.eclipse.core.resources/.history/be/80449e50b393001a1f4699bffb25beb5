@@ -1,0 +1,13 @@
+package com.revature.menu;
+
+import java.util.Scanner;
+
+public class MainMenu {
+	
+	static Scanner scan = new Scanner(System.in);
+	
+	public static void startMenu() {
+	
+	}
+
+}

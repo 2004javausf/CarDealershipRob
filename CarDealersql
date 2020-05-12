@@ -1,0 +1,13 @@
+CREATE USER roberth
+IDENTIFIED BY thisismypassword
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp
+QUOTA 10M ON users;
+
+GRANT connect to roberth;
+GRANT resource to roberth;
+GRANT create session TO roberth;
+GRANT create table TO roberth;
+GRANT create view TO roberth;
+
+conn Falgus/sickness6

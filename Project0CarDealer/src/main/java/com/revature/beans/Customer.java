@@ -8,7 +8,7 @@ public class Customer {
 	private String userName;
 	private String password;
 	private int accountNumber;
-	private int offers;
+	private boolean offer;
 	
 	public Customer() {
 		super();
@@ -63,27 +63,27 @@ public class Customer {
 		this.accountNumber = accountNumber;
 	}
 	
-	public int getOffers() {
-		return offers;
+	public boolean getOffer() {
+		return offer;
 	}
 
-	public void setOffers(int offers) {
-		this.offers = offers;
+	public void setOffer(boolean offer) {
+		this.offer = offer;
 	}
 
-	public Customer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber) {
+	public Customer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber, boolean offer) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
-		this.offers = offers;
+		this.offer = offer;
 	}
 
 	@Override
 	public String toString() {
 		return "User [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", accountNumber=" + accountNumber + ", offers=" + offers + "]";
+				+ ", password=" + password + ", accountNumber=" + accountNumber + ", offer=" + offer + "]";
 	}
 }

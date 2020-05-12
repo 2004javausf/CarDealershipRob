@@ -11,12 +11,18 @@ import java.util.Scanner;
 
 import com.revature.beans.Customer;
 import com.revature.dao.CustomerDAO;
+import com.revature.io.CustomerIO;
 import com.revature.util.ConnFactory;
 
 public class CustomerDAOImpl implements CustomerDAO {
+	public static List<Customer> customerList = new ArrayList<Customer>();
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-
+	public void createCustomer() {
+		CustomerIO.readCustomerFile();
+		AccountsIO.readAccountFile();
+	}
+	
 	@Override
 	public void insertCustomer(String firstName, String lastName, String userName, String password,
 			int accountNumber, int offers) throws SQLException {
@@ -50,6 +56,28 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	public static void validateCustomer() {
 		
+	}
+	
+	public static Customer findCustomerByUserName(String inputUserName) {
+		for (int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
+			String name = CustomerDAOImpl.customerList.get(i).getUserName();
+			if(inputUserName.equals(name)) {
+				return CustomerDAOImpl.customerList.get(i);
+			}
+		}
+		System.out.println("Customer not found");
+		return null;
+	}
+	
+	public static Customer findCustomerByPassword(String inputPassword) {
+		for (int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
+			String password = CustomerDAOImpl.customerList.get(i).getPassword();
+			if (inputPassword.equals(password)) {
+				return CustomerDAOImpl.customerList.get(i);
+			}
+		}
+		System.out.println("Password doed not match");
+		return null;
 	}
 
 }

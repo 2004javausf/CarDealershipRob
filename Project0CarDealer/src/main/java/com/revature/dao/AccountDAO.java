@@ -4,6 +4,8 @@ import java.sql.SQLException;
 
 public interface AccountDAO {
 	
-	public void createAccount(double deposits, int accountBalance) throws SQLException;
+	public void createAccount();
+	
+	public void insertAccount(int accounNumber, double deposits, int accountBalance) throws SQLException;
 
 }

@@ -26,6 +26,10 @@ public class MainMenu {
 			String userName = scan.nextLine();
 			System.out.println("Enter password");
 			String password = scan.nextLine();
+			
+			if (userName == null || password == null) {
+				startMenu();		
+			}
 			break;
 		case 2:
 			CustomerDAOImpl cdi = new CustomerDAOImpl();
@@ -39,7 +43,8 @@ public class MainMenu {
 			OtherServicesMenu();
 			break;
 		case 4:
-			
+			System.out.println("Keep being awesome!");
+			System.exit(1);
 			break;
 		default:
 			break;

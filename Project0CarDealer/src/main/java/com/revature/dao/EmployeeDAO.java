@@ -7,7 +7,9 @@ import com.revature.beans.Employee;
 
 public interface EmployeeDAO {
 	
-	//Create employee
+	public void createEmployee();
+	
+	//Insert employee
 	public void insertEmployee(String firstName, String lastName, String userName, String password) throws SQLException;
 	
 	//Read employees

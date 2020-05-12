@@ -9,9 +9,12 @@ import java.util.List;
 
 import com.revature.beans.Employee;
 import com.revature.dao.EmployeeDAO;
+import com.revature.io.EmployeeIO;
 import com.revature.util.ConnFactory;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
+	
+	public static List<Employee> employeeList = new ArrayList<Employee>();
 	
 	public static ConnFactory cf = ConnFactory.getInstance();
 

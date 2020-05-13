@@ -6,8 +6,10 @@ import java.util.List;
 import com.revature.beans.Car;
 
 public interface CarDAO {
+	
+	public void createCar();
 
-	//Create new car
+	//Insert new car
 	public void insertCar(String make, String model, String color, int year,double price, String sold) throws SQLException;
 
 	//read all cars

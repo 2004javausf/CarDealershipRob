@@ -8,7 +8,6 @@ public class Customer {
 	private String userName;
 	private String password;
 	private int accountNumber;
-	private boolean offer;
 	
 	public Customer() {
 		super();
@@ -62,28 +61,19 @@ public class Customer {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	
-	public boolean getOffer() {
-		return offer;
-	}
 
-	public void setOffer(boolean offer) {
-		this.offer = offer;
-	}
-
-	public Customer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber, boolean offer) {
+	public Customer(int customerId, String firstName, String lastName, String userName, String password, int accountNumber) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
-		this.offer = offer;
 	}
 
 	@Override
 	public String toString() {
 		return "User [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", accountNumber=" + accountNumber + ", offer=" + offer + "]";
+				+ ", password=" + password + ", accountNumber=" + accountNumber + "]";
 	}
 }

@@ -1,17 +1,20 @@
 package com.revature.menu;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 
-import com.revature.beans.Customer;
 import com.revature.daoimpl.CustomerDAOImpl;
+import com.revature.io.CustomerIO;
+import com.revature.io.EmployeeIO;
 
 public class MainMenu {
 	
 	static Scanner scan = new Scanner(System.in);
 	
 	public static void startMenu() {
+		CustomerIO.readCustomerFile();
+		EmployeeIO.readEmployeeFile();
+		CustomerDAOImpl cdi = new CustomerDAOImpl();
 		int choice;
 		System.out.println("Welcome to Awesome Cars!");
 		System.out.println("========================");
@@ -30,17 +33,27 @@ public class MainMenu {
 			if (userName == null || password == null) {
 				startMenu();		
 			}
+			CustomerMenu.customerMenu();
 			break;
 		case 2:
-			CustomerDAOImpl cdi = new CustomerDAOImpl();
+			Scanner sc = new Scanner(System.in);
 			try {
-				cdi.insertCustomer(userName, userName, userName, userName, choice, choice);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				System.out.println("Enter your First Name");
+				String firstName = sc.nextLine();
+				System.out.println("Enter your Last Name");
+				String lastName = sc.nextLine();
+				System.out.println("Make a user name");
+				String userName1 = sc.nextLine();
+				System.out.println("Make a password");
+				String password1 = sc.nextLine();
+				cdi.insertCustomer(firstName, lastName, userName1, password1);
+			}catch (SQLException e) {
 				e.printStackTrace();
 			}
+			startMenu();
+			break;
 		case 3:
-			OtherServicesMenu();
+			
 			break;
 		case 4:
 			System.out.println("Keep being awesome!");

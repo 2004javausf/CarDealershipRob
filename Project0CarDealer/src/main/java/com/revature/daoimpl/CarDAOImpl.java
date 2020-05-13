@@ -6,23 +6,60 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.revature.beans.Car;
 import com.revature.dao.CarDAO;
+import com.revature.io.CarIO;
 import com.revature.util.ConnFactory;
 
 public class CarDAOImpl implements CarDAO {
 	
+	public static List<Car> carList = new ArrayList<Car>();
+	
 	public static ConnFactory cf = ConnFactory.getInstance();
-
-	@Override
-	public void insertCar(int carId, String make, String model, String color, int year, double price, String sold)
-			throws SQLException {
-		Connection conn = cf.getConnection();
-		Statement stmt = conn.createStatement();
-		String sql = "INSERT INTO STUDENT VALUES(" +carId+ ", '"+make+"', '"+model+"', '"+color+"', "+year+",  "+sold+")";
-		stmt.executeUpdate(sql);
+	
+	public void createCar() {
+		CarIO.readCarFile();
+		List<Car> cList = CarDAOImpl.carList;
+		Scanner intInput = new Scanner(System.in);
+		Scanner txtInput = new Scanner(System.in);
+		Scanner dblInput = new Scanner(System.in);
+		
+		String make;
+		String model;
+		String color;
+		int year;
+		double price;
+		boolean sold = false;
+		
+		System.out.println("Make");
+		make = txtInput.nextLine();
+		System.out.println("Model");
+		model = txtInput.nextLine();
+		System.out.println("Color");
+		color = txtInput.nextLine();
+		System.out.println("Year");
+		year = intInput.nextInt();
+		System.out.println("Price");
+		price = dblInput.nextDouble();
+		if (price <= 0) {
+			System.out.println("Price must be more than $0.00");
+			price = dblInput.nextDouble();
+		}
+		Car car = new Car();
+		carList.add(car);
+		
 	}
+
+//	@Override
+//	public void insertCar(int carId, String make, String model, String color, int year, double price, String sold)
+//			throws SQLException {
+//		Connection conn = cf.getConnection();
+//		Statement stmt = conn.createStatement();
+//		String sql = "INSERT INTO STUDENT VALUES(" +carId+ ", '"+make+"', '"+model+"', '"+color+"', "+year+",  "+sold+")";
+//		stmt.executeUpdate(sql);
+//	}
 	@Override
 	public List<Car> getCarList() throws SQLException {
 		List<Car> carList = new ArrayList<Car>();
@@ -35,4 +72,23 @@ public class CarDAOImpl implements CarDAO {
 		}
 		return carList;
 	}
+
+	@Override
+	public void insertCar(String make, String model, String color, int year, double price, String sold)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static Car findCarById(int inputId) {
+		for (int i = 0; i < CarDAOImpl.carList.size(); i++) {
+			int carId = CarDAOImpl.carList.get(i).getCarId();
+			if(inputId == carId) {
+				return CarDAOImpl.carList.get(i);
+			}
+		}
+		System.out.println("Car Id does not match");
+		return null;
+	}
+	
 }

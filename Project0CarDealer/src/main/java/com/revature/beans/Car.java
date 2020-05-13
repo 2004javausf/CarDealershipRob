@@ -8,8 +8,7 @@ public class Car {
 	private String color;
 	private int year;
 	private double price;
-	private int offers;
-	private String sold;
+	private boolean sold = false;
 	
 	
 		//getters and setters
@@ -47,32 +46,22 @@ public class Car {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getSold() {
+	public boolean getSold() {
 		return sold;
 	}
-	public void setSold(String sold) {
+	public void setSold(boolean sold) {
 		this.sold = sold;
 	}
-		
-	public int getOffers() {
-		return offers;
-	}
-	
-	public void setOffers(int offers) {
-		this.offers = offers;
-	}
-	
 	
 	public int getCarId() {
-		return carId;
-		
+		return carId;	
 	}
 	
 	public Car() {
 		super();
 		
 	}
-	public Car(int carId, String make, String model, String color, int year, double price, String sold) {
+	public Car(int carId, String make, String model, String color, int year, double price, boolean sold) {
 		super();
 		this.carId = carId;
 		this.make = make;
@@ -80,13 +69,12 @@ public class Car {
 		this.color = color;
 		this.year = year;
 		this.price = price;
-		this.offers = offers;
 		this.sold = sold;
 	}
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", color=" + color + ", year="
-				+ year + ", price=" + price + ", offers=" + offers + ", sold=" + sold + "]";
+				+ year + ", price=" + price + ", sold=" + sold + "]";
 	}
 	
 	

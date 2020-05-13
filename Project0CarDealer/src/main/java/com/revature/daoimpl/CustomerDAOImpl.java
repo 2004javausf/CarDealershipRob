@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.beans.Account;
 import com.revature.beans.Customer;
 import com.revature.dao.CustomerDAO;
+import com.revature.io.AccountIO;
 import com.revature.io.CustomerIO;
 import com.revature.util.ConnFactory;
 
@@ -20,24 +22,50 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	public void createCustomer() {
 		CustomerIO.readCustomerFile();
-		AccountsIO.readAccountFile();
+		AccountIO.readAccountFile();
+		List<Customer> cList = CustomerDAOImpl.customerList;
+		List<Account> accList = AccountDAOImpl.accountList;
+		Scanner txtInput = new Scanner(System.in);
+		
+		String firstName;
+		String lastName;
+		String userName;
+		String password;
+		int accountNumber = 0;
+		int answer = 0;
+		
+		System.out.println("Enter your First Name");
+		firstName = txtInput.nextLine();
+		System.out.println("Enter your Last Name");
+		lastName = txtInput.nextLine();
+		System.out.println("Make a user name");
+		userName = txtInput.nextLine();
+			for (int i = 0; i < cList.size(); i++) {
+				while (userName.equals(cList.get(i).getUserName())) {
+					System.out.println("Username already exists");
+					System.out.println("Try another user name");
+					userName = txtInput.nextLine();
+				}
+			}
+		System.out.println("Make a password");
+		password = txtInput.nextLine();
+		accountNumber = accList.size() + 1;
+		double deposits = 0;
+		double accountBalance = 0;
+		Account account = new Account(accountNumber, deposits, accountBalance);
 	}
 	
 	@Override
-	public void insertCustomer(String firstName, String lastName, String userName, String password,
-			int accountNumber, int offers) throws SQLException {
+	public void insertCustomer(String firstName, String lastName, String userName, String password) throws SQLException {
 		Connection conn = cf.getConnection();
-		Scanner textInput = new Scanner(System.in);
-		String sql = "INSERT INTO CUSTOMER VALUES(CSEQ.NEXTVAL, ?, ?, ?, ?, ASEQ.NEXTVAL, 0)";
-		PreparedStatement ps = conn.prepareStatement(sql);
+		Scanner txtInput = new Scanner(System.in);
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO CUSTOMER VALUES(CSEQ.NEXTVAL, ?, ?, ?, ?, ASEQ.NEXTVAL)");
+
 		ps.setString(1, firstName);
 		ps.setString(2, lastName);
 		ps.setString(3, userName);
 		ps.setString(4, password);
-		ps.executeUpdate();
-		
-		
-		
+		ps.executeUpdate();			
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public interface CustomerDAO {
 	public void createCustomer();
 	
 	//Add new customer
-	public void insertCustomer(String firstName, String lastName, String userName, String password, int accountNumber, int offers) throws SQLException;
+	public void insertCustomer(String firstName, String lastName, String userName, String password) throws SQLException;
 
 	//Read all customers
 	public List<Customer> getCustomerList() throws SQLException;

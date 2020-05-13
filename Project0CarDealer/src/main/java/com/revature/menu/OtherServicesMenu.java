@@ -42,6 +42,7 @@ public class OtherServicesMenu {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			otherServicesMenu();
 			break;
 		case 2:
 			
@@ -53,7 +54,7 @@ public class OtherServicesMenu {
 			
 			break;
 		case 5:
-			
+			System.exit(1);
 			break;
 
 		default:

@@ -1,0 +1,21 @@
+package com.revature.testing;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.revature.beans.Account;
+import com.revature.service.AccountMethods;
+
+class AccountMethodsTest {
+	Account account = new Account(1, 50, 4500);
+	AccountMethods activity = new AccountMethods();
+
+	@Test
+	@DisplayName("Deposits to lower balance due")
+	void depositsTest() {
+		activity.deposits(account, 78);
+		assertEquals(128, account.getDeposits());
+		assertEquals(4422,account.getAccountBalance());
+	}
+
+}

@@ -54,6 +54,7 @@ public class OtherServicesMenu {
 			
 			break;
 		case 5:
+			System.out.println("Goodbye!");
 			System.exit(1);
 			break;
 

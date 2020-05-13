@@ -45,7 +45,9 @@ public class CarDAOImpl implements CarDAO {
 		while (rs.next()) {
 			c = new Car(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDouble(6), rs.getString(7));
 		}
+		System.out.println(carList);
 		return carList;
+		
 	}
 	
 	public static Car findCarById(int inputId) {

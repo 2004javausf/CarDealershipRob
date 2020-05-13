@@ -1,0 +1,15 @@
+package com.revature.driver;
+
+import java.util.Scanner;
+
+import com.revature.daoimpl.EmployeeDAOImpl;
+import com.revature.menu.MainMenu;
+
+public class Driver {
+	public static Scanner scan = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		MainMenu.startMenu();
+
+	}
+}

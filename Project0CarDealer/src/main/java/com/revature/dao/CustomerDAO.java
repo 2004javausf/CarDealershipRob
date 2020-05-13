@@ -7,11 +7,10 @@ import com.revature.beans.Customer;
 
 public interface CustomerDAO {
 	
-	//create customer
-	public void createCustomer();
-	
+	public void createCustomer(String userName, String password);
+		
 	//Add new customer
-	public void insertCustomer(String firstName, String lastName, String userName, String password, int accountNumber, int offers) throws SQLException;
+	public void insertCustomer(String firstName, String lastName, String userName, String password) throws SQLException;
 
 	//Read all customers
 	public List<Customer> getCustomerList() throws SQLException;

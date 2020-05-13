@@ -9,35 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.beans.Account;
 import com.revature.beans.Customer;
 import com.revature.dao.CustomerDAO;
+import com.revature.io.AccountIO;
 import com.revature.io.CustomerIO;
 import com.revature.util.ConnFactory;
+import com.revature.util.LogThat;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	public static List<Customer> customerList = new ArrayList<Customer>();
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public void createCustomer() {
-		CustomerIO.readCustomerFile();
-		AccountsIO.readAccountFile();
-	}
-	
 	@Override
-	public void insertCustomer(String firstName, String lastName, String userName, String password,
-			int accountNumber, int offers) throws SQLException {
+	public void insertCustomer(String firstName, String lastName, String userName, String password) throws SQLException {
 		Connection conn = cf.getConnection();
-		Scanner textInput = new Scanner(System.in);
-		String sql = "INSERT INTO CUSTOMER VALUES(CSEQ.NEXTVAL, ?, ?, ?, ?, ASEQ.NEXTVAL, 0)";
-		PreparedStatement ps = conn.prepareStatement(sql);
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO CUSTOMER VALUES(CSEQ.NEXTVAL, ?, ?, ?, ?, ASEQ.NEXTVAL)");
+
 		ps.setString(1, firstName);
 		ps.setString(2, lastName);
 		ps.setString(3, userName);
 		ps.setString(4, password);
-		ps.executeUpdate();
-		
-		
-		
+		ps.executeUpdate();	
 	}
 
 	@Override
@@ -50,34 +43,64 @@ public class CustomerDAOImpl implements CustomerDAO {
 		while (rs.next()) {
 			c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
 			customerList.add(c);
+			System.out.println(customerList);
 		}
 		return customerList;
 	}
 	
-	public static void validateCustomer() {
+//	public static List<Customer> findCustomerByUserName(String inputUserName, String inputPassword) throws SQLException {
+//		List<Customer> customerList = new ArrayList<Customer>();
+//		Connection conn = cf.getConnection();
+//		Statement stmt = conn.createStatement();
+//		ResultSet rs = stmt.executeQuery("SELECT C_USER_NAME, C_PASSWORD FROM CUSTOMER");
+//		Customer c = null;
+//		while (rs.next()) {
+//			c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
+//			customerList.add(c);
+//		}
+//		for (int i = 0; i < customerList.size(); i++) {
+//			String usName = rs.getString(3);
+//			String psword = rs.getString(5);
+//			if(inputUserName.equals(usName) || inputPassword.equals(psword)) {
+//				return 
+//			
+//		}
+//		return customerList;
+//		}
+//		System.out.println("User name not Found");
+//		return null;
+//		
+//	}
+//	
+//	public static Customer findCustomerByPassword(String inputPassword) {
+//		
+//		for (int i = 0; i < customerList.size(); i++) {
+//			String password = CustomerDAOImpl.customerList.get(i).getPassword();
+//			if (inputPassword.equals(password)) {
+//				return CustomerDAOImpl.customerList.get(i);
+//			}
+//		}
+//		System.out.println("Password doed not match");
+//		return null;
+//	}
+//
+	@Override
+	public void createCustomer(String userName, String password) {
+		CustomerIO.readCustomerFile();
+		List<Customer> cList = CustomerDAOImpl.customerList;
+		
+		String username;
+		String password;
+		
+		for (int i = 0; i < cList.size(); i++) {
+			while(userName.equals(cList.get(i))) {
+				System.out.println("That username has been taken");
+			}
+			
+		}
 		
 	}
 	
-	public static Customer findCustomerByUserName(String inputUserName) {
-		for (int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
-			String name = CustomerDAOImpl.customerList.get(i).getUserName();
-			if(inputUserName.equals(name)) {
-				return CustomerDAOImpl.customerList.get(i);
-			}
-		}
-		System.out.println("Customer not found");
-		return null;
-	}
-	
-	public static Customer findCustomerByPassword(String inputPassword) {
-		for (int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
-			String password = CustomerDAOImpl.customerList.get(i).getPassword();
-			if (inputPassword.equals(password)) {
-				return CustomerDAOImpl.customerList.get(i);
-			}
-		}
-		System.out.println("Password doed not match");
-		return null;
-	}
+
 
 }

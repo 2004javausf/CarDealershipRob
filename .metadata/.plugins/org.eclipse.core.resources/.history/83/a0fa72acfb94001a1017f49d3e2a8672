@@ -1,0 +1,40 @@
+package com.revature.menu;
+
+import java.util.Scanner;
+
+import com.revature.io.AccountIO;
+import com.revature.io.CarIO;
+import com.revature.io.CustomerIO;
+
+public class CustomerMenu {
+	
+	static Scanner scan = new Scanner(System.in);
+	
+	public static void customerMenu() {
+		int choice;
+		System.out.println("How can we be of service?");
+		System.out.println("Press 1 to see available cars");
+		System.out.println("Press 2 to make an offer");
+		System.out.println("Press 3 to make a payment");
+		System.out.println("Press 4 to check balance owed");
+		choice = scan.nextInt();
+		switch (choice) {
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+			customerMenu();
+		default:
+			break;
+		}
+	}
+
+}

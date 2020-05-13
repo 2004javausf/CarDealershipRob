@@ -1,0 +1,12 @@
+package com.revature.menu;
+
+import com.revature.daoimpl.EmployeeDAOImpl;
+
+public class OtherServicesMenu {
+	
+	public static void otherServicesMenu() {
+		EmployeeDAOImpl edi = new EmployeeDAOImpl();
+		System.out.println("Other Services");
+	}
+
+}

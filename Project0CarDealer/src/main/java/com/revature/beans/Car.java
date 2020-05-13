@@ -8,7 +8,6 @@ public class Car {
 	private String color;
 	private int year;
 	private double price;
-	private int offers;
 	private String sold;
 	
 	
@@ -53,19 +52,9 @@ public class Car {
 	public void setSold(String sold) {
 		this.sold = sold;
 	}
-		
-	public int getOffers() {
-		return offers;
-	}
-	
-	public void setOffers(int offers) {
-		this.offers = offers;
-	}
-	
 	
 	public int getCarId() {
-		return carId;
-		
+		return carId;	
 	}
 	
 	public Car() {
@@ -80,13 +69,12 @@ public class Car {
 		this.color = color;
 		this.year = year;
 		this.price = price;
-		this.offers = offers;
 		this.sold = sold;
 	}
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", color=" + color + ", year="
-				+ year + ", price=" + price + ", offers=" + offers + ", sold=" + sold + "]";
+				+ year + ", price=" + price + ", sold=" + sold + "]";
 	}
 	
 	

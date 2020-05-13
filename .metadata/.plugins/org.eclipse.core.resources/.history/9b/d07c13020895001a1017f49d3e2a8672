@@ -1,0 +1,39 @@
+package com.revature.daoimpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.beans.Car;
+import com.revature.beans.Offer;
+import com.revature.dao.OfferDAO;
+import com.revature.util.ConnFactory;
+
+public class OfferDAOImpl implements OfferDAO{
+	
+	public static List<Offer> offerList = new ArrayList<Offer>();
+}
+	
+	public static ConnFactory cf = ConnFactory.getInstance();
+
+	@Override
+	public void createOffer() {
+		
+	}
+	
+	public List<Car> getOfferList() throws SQLException {
+		List<Offer> offerList = new ArrayList<Offer>();
+		Connection conn = cf.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM OFFER");
+		Offer o = null;
+		while (rs.next()) {
+			o = new Offer(rs.getInt(1),rs.getInt(2), rs.getInt(3));
+		}
+		return offerList;
+	}
+}

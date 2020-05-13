@@ -30,7 +30,11 @@ public class CustomerMenu {
 			}
 			break;
 		case 2:
-			
+			Scanner dbscan = new Scanner(System.in);
+			System.out.println("Enter the ID number of the car you would like");
+			int carId = scan.nextInt();
+			System.out.println("How much would you like to offer?");
+			double depositamount = dbscan.nextDouble();
 			break;
 		case 3:
 			

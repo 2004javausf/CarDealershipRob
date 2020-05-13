@@ -1,16 +1,50 @@
 package com.revature.menu;
 
-import com.revature.io.AccountIO;
-import com.revature.io.CarIO;
-import com.revature.io.CustomerIO;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.revature.daoimpl.CarDAOImpl;
 
 public class CustomerMenu {
 	
+	static Scanner scan = new Scanner(System.in);
+	
 	public static void customerMenu() {
-		CustomerIO.readCustomerFile();
-		AccountIO.readAccountFile();
-		CarIO.readCarFile();
+		int choice;
+		CarDAOImpl cdi = new CarDAOImpl();
 		System.out.println("How can we be of service?");
+		System.out.println("Press 1 to see available cars");
+		System.out.println("Press 2 to make an offer");
+		System.out.println("Press 3 to make a payment");
+		System.out.println("Press 4 to check balance owed");
+		System.out.println("Press 5 to exit");
+		choice = scan.nextInt();
+		switch (choice) {
+		case 1:
+			try {
+				cdi.getCarList();
+				System.out.println(cdi.carList);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			customerMenu();
+			break;
+		case 5:
+			System.out.println("Have a good one!");
+			System.exit(1);
+			break;
+		default:
+			break;
+		}
 	}
 
 }

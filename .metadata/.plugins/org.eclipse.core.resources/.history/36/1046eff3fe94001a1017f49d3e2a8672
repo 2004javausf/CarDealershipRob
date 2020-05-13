@@ -1,0 +1,18 @@
+package com.revature.menu;
+
+import java.util.Scanner;
+
+import com.revature.daoimpl.CarDAOImpl;
+import com.revature.daoimpl.EmployeeDAOImpl;
+
+public class OtherServicesMenu {
+	
+	public static void otherServicesMenu() {
+		EmployeeDAOImpl edi = new EmployeeDAOImpl();
+		CarDAOImpl cadi = new CarDAOImpl();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Other Services");
+		System.out.println("Press 1 to add car");
+	}
+
+}

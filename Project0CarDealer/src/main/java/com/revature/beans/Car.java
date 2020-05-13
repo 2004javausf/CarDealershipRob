@@ -8,7 +8,7 @@ public class Car {
 	private String color;
 	private int year;
 	private double price;
-	private boolean sold = false;
+	private String sold;
 	
 	
 		//getters and setters
@@ -46,10 +46,10 @@ public class Car {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public boolean getSold() {
+	public String getSold() {
 		return sold;
 	}
-	public void setSold(boolean sold) {
+	public void setSold(String sold) {
 		this.sold = sold;
 	}
 	
@@ -61,7 +61,7 @@ public class Car {
 		super();
 		
 	}
-	public Car(int carId, String make, String model, String color, int year, double price, boolean sold) {
+	public Car(int carId, String make, String model, String color, int year, double price, String sold) {
 		super();
 		this.carId = carId;
 		this.make = make;

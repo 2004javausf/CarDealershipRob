@@ -1,9 +1,9 @@
 package com.revature.driver;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.revature.daoimpl.CustomerDAOImpl;
+import com.revature.beans.Employee;
+import com.revature.daoimpl.EmployeeDAOImpl;
 import com.revature.menu.MainMenu;
 
 public class Driver {

@@ -1,6 +1,7 @@
 package com.revature.daoimpl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,47 +20,21 @@ public class CarDAOImpl implements CarDAO {
 	
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public void createCar() {
-		CarIO.readCarFile();
-		List<Car> cList = CarDAOImpl.carList;
-		Scanner intInput = new Scanner(System.in);
-		Scanner txtInput = new Scanner(System.in);
-		Scanner dblInput = new Scanner(System.in);
+	@Override
+	public void insertCar(String make, String model, String color, int year, double price)
+			throws SQLException {
 		
-		String make;
-		String model;
-		String color;
-		int year;
-		double price;
-		boolean sold = false;
-		
-		System.out.println("Make");
-		make = txtInput.nextLine();
-		System.out.println("Model");
-		model = txtInput.nextLine();
-		System.out.println("Color");
-		color = txtInput.nextLine();
-		System.out.println("Year");
-		year = intInput.nextInt();
-		System.out.println("Price");
-		price = dblInput.nextDouble();
-		if (price <= 0) {
-			System.out.println("Price must be more than $0.00");
-			price = dblInput.nextDouble();
-		}
-		Car car = new Car();
-		carList.add(car);
-		
+			Connection conn = cf.getConnection();
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO CAR VALUES(CARSEQ.NEXTVAL, ?, ?, ?, ?, ?, 'NO')");
+
+			ps.setString(1, make);
+			ps.setString(2, model);
+			ps.setString(3, color);
+			ps.setInt(4, year);
+			ps.setDouble(5, price);
+			ps.executeUpdate();			
 	}
 
-//	@Override
-//	public void insertCar(int carId, String make, String model, String color, int year, double price, String sold)
-//			throws SQLException {
-//		Connection conn = cf.getConnection();
-//		Statement stmt = conn.createStatement();
-//		String sql = "INSERT INTO STUDENT VALUES(" +carId+ ", '"+make+"', '"+model+"', '"+color+"', "+year+",  "+sold+")";
-//		stmt.executeUpdate(sql);
-//	}
 	@Override
 	public List<Car> getCarList() throws SQLException {
 		List<Car> carList = new ArrayList<Car>();
@@ -68,16 +43,9 @@ public class CarDAOImpl implements CarDAO {
 		ResultSet rs = stmt.executeQuery("SELECT * FROM CAR");
 		Car c = null;
 		while (rs.next()) {
-			c = new Car(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDouble(7), rs.getString(8));
+			c = new Car(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDouble(6), rs.getString(7));
 		}
 		return carList;
-	}
-
-	@Override
-	public void insertCar(String make, String model, String color, int year, double price, String sold)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public static Car findCarById(int inputId) {
